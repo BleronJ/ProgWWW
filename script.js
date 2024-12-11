@@ -1,47 +1,58 @@
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault(); 
-    
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+$(document).ready(function () {
+    const movies = [];
 
+    // Gather movie information
+    $(".movie-card").each(function () {
+        const title = $(this).find(".movie-title").text().trim();
+        const imgSrc = $(this).find(".movie-image").attr("src");
 
-    if (email === "" || password === "") {
-        alert("Please fill in both fields.");
-    } else {
-
-        alert("Login Successful!");
-
-        window.location.href = "dashboard.html"; 
-    }
-});
-$(document).ready(function() {
-    const movies = [
-        "John Wick 3", "Sinister", "Home Alone", "Joker", "Kung Fu Panda 4", "Bagman", 
-        "Elevation", "Scooby-Doo Tombie Island", "The Beekeepers", "The Finnish Line",
-        "Armor", "Smile 2", "The Dark Knight"
-    ];
-
-    // Dynamically create movie cards
-    movies.forEach(movie => {
-        $(".movies-container").append(`
-            <div class="movie-card">
-                <div class="movie-info">
-                    <h2 class="movie-title">${movie}</h2>
-                </div>
-            </div>
-        `);
+        if (title && imgSrc) {
+            movies.push({ title, imgSrc });
+        }
     });
 
-    // Search functionality
-    $('#search-input').on('input', function() {
-        const query = $(this).val().toLowerCase();
-        $('.movie-card').each(function() {
-            const movieTitle = $(this).find('.movie-title').text().toLowerCase();
-            if (movieTitle.includes(query)) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
+    // Function to filter movies based on search query
+    function filterMovies(query) {
+        return movies.filter((movie) =>
+            movie.title.toLowerCase().includes(query.toLowerCase())
+        );
+    }
+
+    // Event listener for movie search input
+    $("#movieSearch").on("input", function () {
+        const query = $(this).val().trim();
+        const results = filterMovies(query);
+
+        $("#searchResults").empty();  // Clear previous results
+
+        // Display results if any
+        if (query && results.length > 0) {
+            results.forEach((movie) => {
+                $("#searchResults").append(`
+                    <li>
+                        <img src="${movie.imgSrc}" alt="${movie.title}" class="result-thumbnail">
+                        <span>${movie.title}</span>
+                    </li>
+                `);
+            });
+        } else if (query) {
+            $("#searchResults").append("<li>No results found</li>");
+        }
+    });
+
+    // Click event for selecting a movie from the search results
+    $("#searchResults").on("click", "li", function () {
+        const selectedMovie = $(this).find("span").text().trim();
+        alert(`You selected: ${selectedMovie}`);
+        $("#movieSearch").val(selectedMovie);
+        $("#searchResults").empty();  // Clear the search results
+    });
+
+    // FAQ accordion functionality (using vanilla JavaScript)
+    document.querySelectorAll('.faq-item h3').forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            item.classList.toggle('active');
         });
     });
 });
