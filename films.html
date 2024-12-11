@@ -26,6 +26,11 @@
 
 
     <h1 style="text-align: center; margin: 20px 0;">Movies</h1>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button id="search-btn">
+        </button>
+    </div>
 
     
     <div class="movies-container">
@@ -161,6 +166,60 @@
     <footer class="footer">
         <p>&copy; 2024 ETicketing Cinema | All Rights Reserved</p>
     </footer>
-<script src="script.js"></script>
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    const movies = [
+    {title: "John Wick 3", imgSrc: "./img/movies/johnwick3.jpg"},
+    {title: "Sinister", imgSrc: "./img/movies/sinister.jpg"},
+    {title: "Home Alone", imgSrc: "./img/movies/homealone.jpg"},
+    {title: "Joker", imgSrc: "./img/movies/joker.jpg"},
+    {title: "Kung Fu Panda 4", imgSrc: "./img/movies/kf4.jpg"},
+    {title: "Bagman", imgSrc: "./img/movies/bagman.jpg"},
+    {title: "Elevation", imgSrc: "./img/movies/elevation.jpg"},
+    {title: "Scooby-Doo Tombie Island", imgSrc: "./img/movies/scobydo.jpeg"},
+    {title: "The Beekeepers", imgSrc: "./img/movies/beekepers2.jpg"},
+    {title: "The Finnish Line", imgSrc: "./img/movies/thfl.jpg"},
+    {title: "Armor", imgSrc: "./img/movies/armor.jpg"},
+    {title: "Smile 2", imgSrc: "./img/movies/smile2.jpg"}
+];
+
+// Append the movie cards
+$(document).ready(function() {
+    movies.forEach(movie => {
+        $(".movies-container").append(`
+            <div class="movie-card">
+                <img src="${movie.imgSrc}" alt="${movie.title}" class="movie-image">
+                <div class="movie-info">
+                    <h2 class="movie-title">${movie.title}</h2>
+                </div>
+            </div>
+        `);
+    });
+
+    // Search functionality
+    $('#search-input').on('input', function() {
+        const query = $(this).val().toLowerCase();
+        let found = false;
+
+        // Hide all movie cards initially
+        $('.movie-card').each(function() {
+            const movieTitle = $(this).find('.movie-title').text().toLowerCase();
+
+            // Show only the card that matches the search query
+            if (movieTitle.includes(query)) {
+                if (!found) {  // Only show one movie
+                    $(this).show();
+                    found = true;
+                } else {
+                    $(this).hide();  // Hide any additional matching cards
+                }
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+});
+</script>
+
