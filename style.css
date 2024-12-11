@@ -24,7 +24,7 @@ body {
 
 .navbar-menu a {
     text-decoration: none;
-    color: #ecf0f1;
+    color: black;
     font-size: 16px;
     transition: color 0.3s;
 }
@@ -154,8 +154,8 @@ body {
 .movie-image {
     width: 100%;
     height: 200px;
-    object-fit: fill; /* Ensures the image fills the area without distortion */
-    border-radius: 8px; /* Optional: Adds rounded corners for better aesthetics */
+    object-fit: fill; 
+    border-radius: 8px; 
 }
 
 
@@ -190,27 +190,26 @@ body {
 .buy-ticket-btn:hover {
     background-color: #c0392b;
 }
-/* General Reset for Margins and Padding */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body and HTML Setup */
 html, body {
-    height: 100%;  /* Ensure the page takes full height */
+    height: 100%;  
     font-family: Arial, sans-serif;
 }
 
-/* Main Container */
+
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;  /* Ensure the page takes full viewport height */
+    min-height: 100vh; 
 }
 
-/* Navbar */
+
 .navbar {
     background-color: #333;
     color: white;
@@ -230,20 +229,20 @@ body {
     text-decoration: underline;
 }
 
-/* Main Content */
+
 main {
-    flex: 1;  /* This makes sure the main content takes the available space */
-    padding: 20px;
+    flex: 1;  
+    margin: 50px auto;
 }
 
-/* Footer */
+
 footer {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 10px;
 }
-/* Event Section Styling */
+
 .event {
     background-color: #0056b3;
     margin: 20px 0;
@@ -280,7 +279,7 @@ footer {
 .event-image {
     margin-left: 20px;
 }
-/* Room Section Styling */
+
 .room {
     background-color: #f4f4f4;
     margin: 20px 0;
@@ -327,29 +326,28 @@ footer {
     background-size: fill;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 35px;
+    padding: 20px;
     text-align: center;
     color: #fff;
 }
-/* Body background image */
+
 body {
-    background-image: url('./img/room.jpeg'); /* Replace with your image path */
-    background-size: cover; /* Ensures the image covers the whole page */
-    background-position: center; /* Centers the background image */
-    background-attachment: fixed; /* Keeps the background fixed during scrolling */
-    color: #fff; /* Adjust text color for readability */
+    background-image: url('./img/room.jpeg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+    color: #fff; 
 }
 
-/* Navbar background */
+
 .navbar {
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    background-color: rgba(0, 0, 0, 0.7); 
     padding: 15px 20px;
 }
 
-/* Room Section Styling */
+
 .room {
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for room sections */
-    margin: 20px 0;
+    background-color: rgba(255, 255, 255, 0.8); 
     padding: 15px;
     border-radius: 8px;
     display: flex;
@@ -417,60 +415,90 @@ body {
     display: inline-block;
     padding: 10px 15px;
     font-size: 0.9rem;
-    color: #fff; /* White text */
-    background-color: #007BFF; /* Blue background */
+    color: #fff; 
+    background-color: #007BFF; 
     border: none;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px; 
     text-align: center;
-    text-decoration: none; /* Remove underline */
+    text-decoration: none; 
     cursor: pointer;
-    margin-top: 10px; /* Add spacing above */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
+    margin-top: 10px; 
+    transition: background-color 0.3s ease; 
 }
 
 .movie-trailer-btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3; 
 }
-.search-container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    align-items: center;
+.input-group {
+    margin-bottom: 15px;
 }
 
-#search-input {
-    padding: 8px;
-    border-radius: 5px;
+.input-group label {
+    font-size: 16px;
+    color: #fff;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
     border: 1px solid #ccc;
-    width: 200px;
+    border-radius: 5px;
+    margin-top: 5px;
 }
 
-#search-btn {
-    margin-left: 10px;
-    cursor: pointer;
-    background: transparent;
-    border: none;
+.input-group input:focus {
+    border-color: #007bff;
+    outline: none;
 }
-
-#search-btn img {
-    width: 20px;
-    height: 20px;
-}
-/* Style for the search and title container */
-.search-title-container {
+.login-form {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 10px 0;
-    padding-left: 20px; /* Optional: Adds spacing from the left side */
+    flex-direction: column;
+}
+.login-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-/* Styling for the search bar */
+.login-btn:hover {
+    background-color: #0056b3;
+}
+.forgot-password {
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+.login-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-page main {
+    max-width: 400px;
+    margin: 100px auto;
+    background-color: rgba(0, 0, 0, 0.6); 
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
 .search-container {
     display: flex;
     align-items: center;
-    margin-right: 20px; /* Space between the search bar and the title */
+    margin: 10px 0 20px; 
+    padding-left: 20px; 
 }
 
 #search-input {
@@ -478,7 +506,7 @@ body {
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 20px;
-    width: 200px; /* Adjust the width as needed */
+    width: 200px; 
     margin-right: 10px;
 }
 
@@ -494,14 +522,8 @@ body {
     height: 20px;
 }
 
-/* Optional: Hover effect for search button */
 #search-btn:hover img {
     opacity: 0.7;
-}
-
-h1 {
-    font-size: 2rem;
-    margin: 0; /* Remove default margin */
 }
 
 
