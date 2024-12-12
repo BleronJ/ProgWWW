@@ -7,10 +7,7 @@ This project is a cinema ticket booking system designed to allow users to view f
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
-- [Usage](#usage)
-- [File Structure](#file-structure)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Description
 
