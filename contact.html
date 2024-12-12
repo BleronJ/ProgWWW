@@ -108,6 +108,19 @@
         .submit-btn:hover {
             background-color: #45a049;
         }
+        .canvas-background {
+            position: relative;
+            height: 500px;
+            z-index: -1;
+        }
+    canvas#contactCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        }
+
     </style>
 </head>
 <body>
@@ -128,7 +141,12 @@
 
     <h1 style="text-align: center; margin: 20px 0;">Contact Us</h1>
 
+    <div class="canvas-background">
+        <canvas id="contactCanvas" width="1000" height="500"></canvas>
+    </div>
     <div class="contact-container">
+   
+    
         <form class="contact-form">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -176,14 +194,72 @@
     <footer class="footer">
         <p>&copy; 2024 ETicketing Cinema | All Rights Reserved</p>
     </footer>
-
+    
     <script>
-        document.querySelectorAll('.faq-item h3').forEach(header => {
-            header.addEventListener('click', () => {
-                const item = header.parentElement;
-                item.classList.toggle('active');
-            });
+    // Canvas Animation Script
+    const canvas = document.getElementById('contactCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Set up animation
+    let particles = [];
+    const maxParticles = 100;
+
+    function createParticle() {
+        return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 5 + 1,
+            color: `rgba(255, 255, 255, ${Math.random()})`,
+            dx: (Math.random() - 0.5) * 2,
+            dy: (Math.random() - 0.5) * 2,
+        };
+    }
+
+    function drawParticle(particle) {
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        ctx.fillStyle = particle.color;
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    function updateParticle(particle) {
+        particle.x += particle.dx;
+        particle.y += particle.dy;
+
+        // Wrap around canvas edges
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach((particle) => {
+            drawParticle(particle);
+            updateParticle(particle);
         });
-    </script>
+
+        requestAnimationFrame(animate);
+    }
+
+    // Initialize particles
+    for (let i = 0; i < maxParticles; i++) {
+        particles.push(createParticle());
+    }
+
+    animate();
+
+    // FAQ Toggle Script
+    document.querySelectorAll('.faq-item h3').forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            item.classList.toggle('active');
+        });
+    });
+</script>
+
 </body>
 </html>
