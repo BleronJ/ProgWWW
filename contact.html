@@ -196,11 +196,11 @@
     </footer>
     
     <script>
-    // Canvas Animation Script
+   
     const canvas = document.getElementById('contactCanvas');
     const ctx = canvas.getContext('2d');
 
-    // Set up animation
+    
     let particles = [];
     const maxParticles = 100;
 
@@ -227,7 +227,7 @@
         particle.x += particle.dx;
         particle.y += particle.dy;
 
-        // Wrap around canvas edges
+    
         if (particle.x < 0) particle.x = canvas.width;
         if (particle.x > canvas.width) particle.x = 0;
         if (particle.y < 0) particle.y = canvas.height;
@@ -245,14 +245,14 @@
         requestAnimationFrame(animate);
     }
 
-    // Initialize particles
+    
     for (let i = 0; i < maxParticles; i++) {
         particles.push(createParticle());
     }
 
     animate();
 
-    // FAQ Toggle Script
+
     document.querySelectorAll('.faq-item h3').forEach(header => {
         header.addEventListener('click', () => {
             const item = header.parentElement;
